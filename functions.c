@@ -32,7 +32,7 @@ return (handle_write_char(c, buffer, flags, width, precision, size));
  * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
- * 
+ *
  * Return: Number of chars printed
 */
 
@@ -91,9 +91,10 @@ return (write(1, str, length));
  * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
- * 
+ *
  * Return: Number of chars printed
 */
+
 int print_percent(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
@@ -107,7 +108,6 @@ return (write(1, "%%", 1));
 }
 
 /***** PRINT INT *****/
-
 /**
  * print_int - Print int
  * @types: Lista of arguments
@@ -116,7 +116,7 @@ return (write(1, "%%", 1));
  * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
- * 
+ *
  * Return: Number of chars printed
 */
 
@@ -147,7 +147,7 @@ while (num > 0)
 buffer[i--] = (num % 10) + '0';
 num /= 10;
 }
- 
+
 i++;
 
 return (write_number(is_negative, i, buffer, flags, width, precision, size));
