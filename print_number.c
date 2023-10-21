@@ -57,7 +57,7 @@ int print_number(char *str, params_t *params)
 }
 /**
  * print_number_right_shift - -printanumber with optind
- * @ str: the base number as a string
+ * @str: the base number as a string
  * @params: the parameter struct
  *
  * Return: chars printed
