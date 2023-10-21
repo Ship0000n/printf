@@ -14,7 +14,7 @@ int print_char(va_list ap, params_t *params)
 
 	if (params->minus_flag)
 		sum += _putchar(ch);
-	while(pad++ < params->width)
+	while (pad++ < params->width)
 		sum += _putchar(pad_char);
 	if (!params->minus_flag)
 		sum += _putchar(ch);
@@ -34,7 +34,7 @@ int print_int(va_list ap, params_t *params)
 
 	if (params->l_modifier)
 		l = va_arg(ap, long);
-	else if (params->h-modifier)
+	else if (params->h_modifier)
 		l = (short int)va_arg(ap, int);
 	else
 		l = (int)va_arg(ap, int);
@@ -72,7 +72,15 @@ int print_string(va_list ap, params_t *params)
 	}
 	while (j++ < params->width)
 		sum += _putchar(pad_char);
-	if (!params->minus_fag)
+	if (!params->minus_flag)
+	{
+		if (params->precision != UNIT_MAX)
+			for (i = 0; i < pad; i++)
+				sum += _putchar(*str++);
+		else
+			sum += _puts(str);
+	}
+	return (sum);
 }
 
 /**
@@ -106,7 +114,7 @@ int print_S(va_list ap, params_t *params)
 		return (_puts(NULL_STRING));
 	for (; *str; str++)
 	{
-		if ((*str > 0 && *str <32) || *str >= 127)
+		if ((*str > 0 && *str < 32) || *str >= 127)
 		{
 			sum += _putchar('//');
 			sum += _putchar('x');

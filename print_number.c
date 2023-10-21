@@ -1,25 +1,25 @@
 #include "main.h"
 /**
- * _isdigit- checks if character is digit 
+ * _isdigit - checks if character is digit
  * @c: the character to check
  *
- * Return: Iif digit, 0otherwise
- /
+ * Return: Iif digit, 0 otherwise
+ */
 int _isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
 
 /**
- * _strlen - return the length of a stirng 
- * Ws: the string whose length to check
+ * _strlen - return the length of a stirng
+ * @s: the string whose length to check
  *
-
  * Return: integer length of string
  */
 int _strlen(char *s)
 {
 	int i = 0;
+
 	while (*s++)
 		i++;
 	return (i);
@@ -36,14 +36,15 @@ int print_number(char *str, params_t *params)
 {
 	unsigned int i = _strlen(str);
 	int neg = (!params->unsign && *str == '-');
+
 	if (!params->precision && *str == '0' && !str[1])
 		str = "";
 	if (neg)
 	{
-		str++:
-		i--:
+		str++;
+		i--;
 	}
-	if (params->precision !=UNIT_MAX)
+	if (params->precision != UNIT_MAX)
 		while (i++ < params->precision)
 			*--str = "0";
 	if (neg)
@@ -52,7 +53,7 @@ int print_number(char *str, params_t *params)
 	if (!params->minus_flag)
 		return (print_number_right_shift(str, params));
 	else
-		return (print_number_left_shift(str, params)),
+		return (print_number_left_shift(str, params));
 }
 /**
  * print_number_right_shift - -printanumber with optind
@@ -73,13 +74,15 @@ int print_number_right_shift(char *str, params_t *params)
 		str++;
 	else
 		neg = 0;
-	if ((params->plus_flag && !neg2) || (!params->plus_flag && params->space_flag && !neg2))
+	if ((params->plus_flag && !neg2) || (!params->plus_flag &&
+params->space_flag && !neg2))
 		i++;
 	if (neg && pad_char == '0')
-		n +=_putchar('-');
+		n += _putchar('-');
 	if (params->plus_flag && !neg2 && pad_char == '0' && !params->unsign)
 		n += _putchar('+');
-	else if (!params ->plus_flag && params->space_flag && !neg && !params->unsign && params->zero_flag)
+	else if (!params->plus_flag && params->space_flag &&
+!neg && !params->unsign && params->zero_flag)
 		n += _putchar(' ');
 	while (i++ < params->width)
 		n += _putchar(pad_char);
@@ -87,7 +90,8 @@ int print_number_right_shift(char *str, params_t *params)
 		n += _putchar('-');
 	if (params->plus_flag && !neg2 && pad_char == ' ' && !params->unsign)
 		n += _putchar('+');
-	else if (!params->plus_flag && params->space_flag && !neg2 && !params->unsign && !params->zero_flag)
+	else if (!params->plus_flag && params->space_flag && !neg2 &&
+!params->unsign && !params->zero_flag)
 		n += _putchar(' ');
 	n += _puts(str);
 	return (n);
@@ -113,7 +117,7 @@ int print_number_left_shift(char *str, params_t *params)
 	else
 		neg = 0;
 
-	if (parasm->plus-flag && !neg2 && !params->unsign)
+	if (parasm->plus_flag && !neg2 && !params->unsign)
 		n += _putchar(+), i++;
 	else if (params->space_flag && !neg2 && !params->unsign)
 		n += _putchar(' '), i++;
